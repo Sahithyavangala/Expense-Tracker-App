@@ -19,7 +19,7 @@ import mergedTypeDefs from "./typeDefs/index.js";
 import { connectDB } from "./db/connectDB.js";
 import { configurePassport } from "./passport/passport.config.js";
 
-import job from "./cron.js";
+
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -35,9 +35,6 @@ console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
 console.log("Loaded SESSION_SECRET:", process.env.SESSION_SECRET);
 
 configurePassport();
-
-job.start();
-
 
 const app = express();
 
@@ -79,7 +76,7 @@ await server.start();
 app.use(
 	"/graphql",
 	cors({
-		origin: "https://expense-tracker-app-delta-dusky.vercel.app/",
+		origin: "http://localhost:3000",
 		credentials: true,
 	}),
 	express.json(),
@@ -90,11 +87,11 @@ app.use(
 );
 
 
-app.use(express.static(path.join(__dirname, "frontend/dist")));
+// app.use(express.static(path.join(__dirname, "frontend/dist")));
 
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
-});
+// app.get("*", (req, res) => {
+// 	res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
+// });
 
 //Modified server startup
 await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
