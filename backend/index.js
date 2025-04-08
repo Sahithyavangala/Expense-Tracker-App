@@ -76,7 +76,12 @@ await server.start();
 app.use(
 	"/graphql",
 	cors({
-		origin: "http://localhost:3000",
+		
+		origin: [
+			"http://localhost:3000",
+			"https://expense-tracker-app-lake-eight.vercel.app"
+		  ],
+		  
 		credentials: true,
 	}),
 	express.json(),
