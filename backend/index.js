@@ -79,7 +79,7 @@ await server.start();
 app.use(
 	"/graphql",
 	cors({
-		origin: "http://localhost:3000",
+		origin: "https://expense-tracker-app-delta-dusky.vercel.app/",
 		credentials: true,
 	}),
 	express.json(),
