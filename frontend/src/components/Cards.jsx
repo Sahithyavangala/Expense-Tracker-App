@@ -17,7 +17,7 @@ const Cards = () => {
 
 	console.log("cards:", data);
 
-	// TODO => ADD RELATIONSHIPS
+	
 	return (
 		<div className='w-full px-10 min-h-[40vh]'>
 			<p className='text-5xl font-bold text-center my-10'>History</p>
